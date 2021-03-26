@@ -1,5 +1,5 @@
 module.exports = {
-  publicPath: "/", //publicPath取代了baseUrl
+  publicPath: "./", //publicPath取代了baseUrl
   outputDir: "dist",
   lintOnSave: true,
   runtimeCompiler: true, //关键点在这  原来的 Compiler 换成了 runtimeCompiler
@@ -17,7 +17,7 @@ module.exports = {
     // 查阅 https://github.com/vuejs/vue-doc-zh-cn/vue-cli/cli-service.md#配置代理
     proxy: {
       "/api": {
-        target: "http://localhost:8080",
+        target: process.env.VUE_APP_BASE_URL,
         pathRewrite: {
           "^/api": ""
         },

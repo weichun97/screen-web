@@ -1,6 +1,6 @@
-import axios from "axios";
+import request from "@/util/request.js";
 import qs from "qs";
 
 export const $loginApi = {
-  login: param => axios.post("/api/login", qs.stringify(param))
+  login: param => request.post("/login", qs.stringify(param))
 };

@@ -4,25 +4,26 @@
 
 <script>
 import { $deviceApi } from "@/api/device.js";
+import { getQueryString } from "@/util/utils.js";
 
 export default {
   name: "home",
-  data: function () {
+  data() {
     return {
       src: "",
     };
   },
-  created: function () {
+  created() {
     this.getUrl();
     setInterval(() => {
       this.getUrl();
     }, 2000);
   },
   methods: {
-    getUrl: function () {
-      var _this = this;
-      $deviceApi.detail(1).then((response) => {
-        _this.src = response.data.data.url;
+    getUrl() {
+      let id = getQueryString('id');
+      $deviceApi.detail(id).then((response) => {
+        this.src = response.data.url;
       });
     },
   },
